@@ -6,8 +6,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo Hello
-        run: 33echo "Hello world"
+        run: echo "Hello world"
       - name: version
         run: |
           node -v
           npm -v
+  run-windows-commands:
+    runs-on: windows-latest
+    needs:
+      - run-shell-commands
+    steps:
+      - name: Pawer Shel location
+        run: Get-Location
+      - name: Bash location
+        run: pwd
+        shell: bash
