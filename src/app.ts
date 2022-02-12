@@ -11,6 +11,8 @@ import { IExeptionFilter } from './errors/exeption.filter.interface';
 import { UserController } from './users/users.controller';
 import { PrismaService } from './database/prisma.service';
 import { AuthMiddleware } from './common/auth.middleware';
+import swaggerUi from 'swagger-ui-express';
+import * as swaggerDocument from './swagger/openapi.json';
 
 @injectable()
 export class App {
@@ -36,6 +38,9 @@ export class App {
 	}
 
 	useRoutes(): void {
+		this.app.use('/api-docs', swaggerUi.serve);
+		this.app.get('/api-docs', swaggerUi.setup(swaggerDocument));
+		// this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 		this.app.use('/users', this.userController.router);
 	}
 
