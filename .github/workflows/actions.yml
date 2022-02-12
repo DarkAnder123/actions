@@ -8,9 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@2.4.0
       - name: check files
-        run: |
-        ls
-        pwd
+        run: ls
       - name: hello
         uses: actions/hello-world-javascript-action@v1.1
         with:
