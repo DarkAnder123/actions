@@ -1,0 +1,20 @@
+name: Action workflow
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  run-action-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: check files
+        run: ls
+      - name: hello
+        uses: actions/hello-world-javascript-action@v1.1
+        with:
+          who-to-greet: Andriy
+        id: greet
+      - name: show
+        run: echo "${{ steps.greet.outputs.time }}"

@@ -1,0 +1,125 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "test API",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "API functions",
+      "description": "API functions of our application"
+    }
+  ],
+  "paths": {
+    "/users/login": {
+      "post": {
+        "summary": "login user",
+        "tags": [
+          "API functions"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "email": "andrily@gmail.com",
+                "password": "Spbfd"
+              }
+            }
+          }
+        },
+        "description": "parameter id just for test",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "document": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jwt": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/register": {
+      "post": {
+        "summary": "register user",
+        "tags": [
+          "API functions"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "email": "andrily@gmail.com",
+                "password": "Spbfd",
+                "name": "andrii"
+
+              }
+            }
+          }
+        },
+        "description": "parameter id just for test",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "document": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
