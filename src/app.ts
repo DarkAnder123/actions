@@ -46,6 +46,7 @@ export class App {
 
 	useExeptionFilters(): void {
 		this.app.use(this.exeptionFilter.catch.bind(this.exeptionFilter));
+		console.log('ter')
 	}
 
 	public async init(): Promise<void> {
