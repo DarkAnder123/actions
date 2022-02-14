@@ -40,7 +40,6 @@ export class App {
 	useRoutes(): void {
 		this.app.use('/api-docs', swaggerUi.serve);
 		this.app.get('/api-docs', swaggerUi.setup(swaggerDocument));
-		// this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 		this.app.use('/users', this.userController.router);
 	}
 
