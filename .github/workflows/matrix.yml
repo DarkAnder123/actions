@@ -1,0 +1,25 @@
+name: Matrix
+on: pull_request
+jobs:
+  node-version:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [6,8,10]
+        exclude:
+          - os: ubuntu-latest
+            node-version: 6
+          - os: ubuntu-latest
+            node-version: 8
+        include:
+          - os: ubuntu-latest
+            node-version: 14
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Node Version
+        run: node -v
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Node Version
+        run: node -v

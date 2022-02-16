@@ -1,4 +1,6 @@
 name: Action workflow
+env:
+  MY_SECRET: ${{ secrets.MY_SECRET }}
 on:
   pull_request:
     branches:
@@ -17,4 +19,6 @@ jobs:
           who-to-greet: Andriy
         id: greet
       - name: show
-        run: echo "${{ steps.greet.outputs.time }}"
+        run: |
+          echo "${{ steps.greet.outputs.time }}"
+          echo "${MY_SECRET}"
