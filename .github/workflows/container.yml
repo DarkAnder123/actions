@@ -23,7 +23,7 @@ jobs:
           - '5432:5432'
     steps:
       - name: Register
-        run: 'curl -L -X POST http://localhost:8000/users/register -H ''Content-Type: application/json'' --data-raw ''{
+        run: 'curl -X POST http://localhost:8000/users/register -H ''Content-Type: application/json'' --data-raw ''{
         "email": "andrif@gmail.com",
         "name": "andriy",
         "password": "1234"
