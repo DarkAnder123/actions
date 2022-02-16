@@ -6,18 +6,15 @@ jobs:
     services:
       web:
         image: darkander/actionnode
-        environment:
-          - SALT=10
-          - SECRET='MYAPP'
-          - DATABASE_URL=postgresql://prisma:prisma@postgres-db:5432/dev?schema=public
+        env:
+          SALT: 10
+          SECRET: MYAPP
+          DATABASE_URL: postgresql://prisma:prisma@postgres-db:5432/dev?schema=public
         ports:
           - "8000:8000"
-        depends_on:
-          - postgres-db
       postgres-db:
         image: postgres
-        restart: always
-        environment:
+        env:
           POSTGRES_USER: prisma
           POSTGRES_PASSWORD: prisma
         volumes:
