@@ -3,10 +3,31 @@ on: push
 jobs:
   run-container:
     runs-on: ubuntu-latest
-    container:
-      image: node:16-alpine3.14
+    services:
+      web:
+        image: darkander/actionnode
+        environment:
+          - SALT=10
+          - SECRET='MYAPP'
+          - DATABASE_URL=postgresql://prisma:prisma@postgres-db:5432/dev?schema=public
+        ports:
+          - "8000:8000"
+        depends_on:
+          - postgres-db
+      postgres-db:
+        image: postgres
+        restart: always
+        environment:
+          POSTGRES_USER: prisma
+          POSTGRES_PASSWORD: prisma
+        volumes:
+          - postgres:/var/lib/postgresql/data2
+        ports:
+          - '5432:5432'
     steps:
-      - name: Log node version
-        run: |
-          node -v
-          cat /etc/os-release
+      - name: Register
+        run: 'curl -L -X POST http://localhost:8000/users/register -H ''Content-Type: application/json'' --data-raw ''{
+        "email": "andrif@gmail.com",
+        "name": "andriy",
+        "password": "1234"
+        }'''

@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"type": "commonjs",
 	"scripts": {
+		"docker-start": "npx prisma migrate dev --name init && npm start",
 		"start": "node ./dist/src/main.js",
 		"dev": "nodemon",
 		"dev:inspect": "nodemon -e ts,json --exec node --inspect=localhost:9222 -r ts-node/register src/main.ts",
